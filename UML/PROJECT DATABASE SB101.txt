@@ -1,0 +1,198 @@
+mysql> create database hardware_software_support ;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| bank                      |
+| hardware_software         |
+| hardware_software_support |
+| information_schema        |
+| mysql                     |
+| performance_schema        |
+| sb101_project             |
+| sheetal                   |
+| sys                       |
+| yugraj                    |
++---------------------------+
+10 rows in set (0.04 sec)
+
+mysql> create table HOD ;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table HOD
+    -> (
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+ERROR 1050 (42S01): Table 'hod' already exists
+mysql> use HOD ;
+ERROR 1049 (42000): Unknown database 'hod'
+mysql> use hardware_software_support ;
+Database changed
+mysql> create table HOD
+    -> (
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> desc HOD ;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(30) | NO   |     | NULL    |       |
+| username | varchar(30) | NO   |     | NULL    |       |
+| password | varchar(30) | NO   |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> use hod;
+ERROR 1049 (42000): Unknown database 'hod'
+mysql> use hardware_software_support ;
+Database changed
+mysql> show table hod ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'hod' at line 1
+mysql> drop table hod ;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show databases ;
++---------------------------+
+| Database                  |
++---------------------------+
+| bank                      |
+| hardware_software         |
+| hardware_software_support |
+| information_schema        |
+| mysql                     |
+| performance_schema        |
+| sb101_project             |
+| sheetal                   |
+| sys                       |
+| yugraj                    |
++---------------------------+
+10 rows in set (0.00 sec)
+
+mysql> create table HOD ;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql>  create table HOD
+    -> (
+    ->  name varchar(30) not null,
+    -> use HOD ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'use HOD' at line 4
+mysql> create table HOD
+    -> (
+    -> HodId int auto_increment primary key,
+    -> name varchar(30) not null,
+    ->  username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table complaints
+    -> (
+    -> complaintId int not null,
+    -> empId int,
+    -> complaintType varchar(30),
+    -> engId int,
+    -> status varchar(20),
+    -> dateRaised date,
+    -> dateResolved date
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from complaints ;
+Empty set (0.01 sec)
+
+mysql> desc complaints;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| complaintId   | int         | NO   |     | NULL    |       |
+| empId         | int         | YES  |     | NULL    |       |
+| complaintType | varchar(30) | YES  |     | NULL    |       |
+| engId         | int         | YES  |     | NULL    |       |
+| status        | varchar(20) | YES  |     | NULL    |       |
+| dateRaised    | date        | YES  |     | NULL    |       |
+| dateResolved  | date        | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> create table Employee
+    -> (
+    -> EmpId int auto-increment primary key,
+    -> deptid int,
+    -> FOREIGN KEY(deptId) references Employee(deptId),
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto-increment primary key,
+deptid int,
+FOREIGN KEY(deptId) references Employee(' at line 3
+mysql> desc employee ;
+ERROR 1146 (42S02): Table 'hardware_software_support.employee' doesn't existmysql> create table Employee
+    -> (
+    -> EmpId int auto_increment primary key,
+    -> deptid int,
+    -> FOREIGN KEY(deptId) references Employee(deptId),
+    ->  name varchar(30) not null,
+    ->  username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'employee_ibfk_1' in the referenced table 'employee'
+mysql> create table Employee
+    -> (
+    -> EmpId int auto increment primary key,
+    ->  deptid int,
+    -> FOREIGN KEY(deptId) references Employee(deptId),
+    -> name varchar(30) not null,
+    ->  username varchar(30) not null,
+    -> password varchar(30) not null
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto increment primary key,
+ deptid int,
+FOREIGN KEY(deptId) references Employee' at line 3
+mysql>  create table Employee
+    -> (
+    -> EmpId int primary key auto_increment ,
+    -> deptid int,
+    -> FOREIGN KEY(deptId) references Employee(deptId),
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null);
+ERROR 1822 (HY000): Failed to add the foreign key constraint. Missing index for constraint 'employee_ibfk_1' in the referenced table 'employee'
+mysql> desc Employee;
+ERROR 1146 (42S02): Table 'hardware_software_support.employee' doesn't exist
+mysql> create table Department
+    -> (
+    -> deptid int primary key auto_increment,
+    -> dname varchar(30) unique not null,
+    -> location varchar(30) not null
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> create table Employee
+    -> (
+    -> EmpId int primary key auto_increment ,
+    -> deptid int,
+    -> FOREIGN KEY(deptId) references Department(deptId),
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Engineer
+    -> (
+    -> EngId int primary key auto_increment,
+    -> name varchar(30) not null,
+    -> username varchar(30) not null,
+    -> password varchar(30) not null,
+    -> type varchar(30),
+    -> location varchar(30) not null
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>
