@@ -11,9 +11,7 @@ hardwares there exists a separate department, generally known as “SYSTEM ENGIN
 employee must report to this department. Engineers from this department take care of the problem.
 
 Users:
-	1. HOD
-	2. Engineer
-	3. Employee
+	1. HOD  2. Engineer     3. Employee 
 
 Roles for the HOD:
 •	Login into the system 
@@ -22,6 +20,7 @@ Roles for the HOD:
 •	Can Delete any Engineers from the system
 •	Can able to see all the raised problem.
 •	Can assign any problem to any Engineer.
+
 Roles of Engineer:
 •	Each engineer has their own account by which they can login.(credentials given by the HOD)
 •	Engineer can view the problem assigned to him by HOD .
