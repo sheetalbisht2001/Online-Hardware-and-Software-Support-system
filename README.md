@@ -1,10 +1,6 @@
 # Online Hardware and Software Support system
 
 # ER Diagram![ER](https://user-images.githubusercontent.com/101389183/208307814-007bebfd-c997-4136-a348-3e05f5da8ab8.png)
-
-
-
-
 Problem Description:
 The system will be available on an online platform for 24x7 access to the employees, the engineers, the Head of the Department and the administration. It Helps keeping your IT staff productive with fast, accurate, remote technical support for your System environment. It provides defect support for a broad range of Products running on System hardware.
 Factors to consider include cost of downtime, skills, retention, overheads, customer satisfaction, and many others.
